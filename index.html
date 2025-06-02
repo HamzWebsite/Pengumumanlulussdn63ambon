@@ -2,81 +2,59 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pengumuman Kelulusan SDN 63 Ambon</title>
+    <title>Pengumuman Kelulusan SD Negeri 63 Ambon 2024/2025</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
-            width: 100%;
-            max-width: 400px;
-        }
-
-        h2 {
+            background: #f2f2f2;
             text-align: center;
-            margin-bottom: 30px;
+            padding: 50px;
         }
-
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
         input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 20px;
+            font-size: 16px;
         }
-
         button {
-            width: 100%;
-            padding: 12px;
-            background-color: #4CAF50;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #4CAF50;
             color: white;
             border: none;
-            font-size: 16px;
             border-radius: 5px;
-            cursor: pointer;
         }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
         .result {
             margin-top: 20px;
-            text-align: center;
             font-size: 18px;
-        }
-
-        .success {
-            color: green;
             font-weight: bold;
         }
-
-        .fail {
+        .error {
             color: red;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Pengumuman Kelulusan<br>SD Negeri 63 Ambon<br>Tahun Pelajaran 2024/2025</h2>
-        <input type="text" id="nisn" placeholder="Masukkan NISN Anda" />
-        <button onclick="checkGraduation()">Lihat Hasil</button>
-        <div id="result" class="result"></div>
+        <h1>Pengumuman Kelulusan</h1>
+        <h2>SD Negeri 63 Ambon</h2>
+        <p>Tahun Pelajaran 2024/2025</p>
+        <input type="text" id="nisn" placeholder="Masukkan NISN Anda">
+        <br>
+        <button onclick="cekKelulusan()">Login</button>
+        <div id="hasil" class="result"></div>
     </div>
 
     <script>
-        const students = {
+        const dataSiswa = {
             "3122027631": ["AFIKA LEONI", "Lulus"],
             "3138057164": ["ALGANTARA RISHAL MAKEAN", "Lulus"],
             "3136538465": ["ALVIN DION", "Lulus"],
@@ -111,20 +89,28 @@
             "3135355703": ["SATRIA PAMUNGKAS", "Lulus"],
             "0124117212": ["SYARIFUDIN PELUPESSY", "Lulus"],
             "3138104086": ["SYEH ABDUL GAWI ATTAMIMI", "Lulus"],
-            "0133540525": ["VARIS ABDUL RAZAK TUANAYA", "Lulus"]
+            "0133540525": ["VARIS ABDUL RAZAK TUANAYA", "Lulus"],
+            "3121229395": ["KAILA", "Lulus"],
+            "3137449653": ["WA ODE NUR SYAFARABIA MASHIR", "Lulus"],
+            "3124192311": ["ZAHRA SABITA TUAPUTTY", "Lulus"],
+            "0007190024": ["ZAFIRAH AQILAH", "Lulus"],
+            "3128920604": ["LUTHFI FAIZULLAH", "Lulus"]
         };
 
-        function checkGraduation() {
-            const nisn = document.getElementById("nisn").value.trim();
-            const resultDiv = document.getElementById("result");
+        function cekKelulusan() {
+            const nisnInput = document.getElementById("nisn").value.trim();
+            const hasilDiv = document.getElementById("hasil");
 
-            if (students[nisn]) {
-                const [name, status] = students[nisn];
-                resultDiv.innerHTML = `<p>Nama: <strong>${name}</strong></p><p class="success">Keterangan: ${status}</p>`;
+            if (nisnInput in dataSiswa) {
+                const [nama, status] = dataSiswa[nisnInput];
+                hasilDiv.innerHTML = `Nama: <strong>${nama}</strong><br>Status: <strong>${status}</strong>`;
+                hasilDiv.classList.remove("error");
             } else {
-                resultDiv.innerHTML = `<p class="fail">NISN tidak ditemukan. Periksa kembali dan coba lagi.</p>`;
+                hasilDiv.innerHTML = "NISN tidak ditemukan. Periksa kembali.";
+                hasilDiv.classList.add("error");
             }
         }
     </script>
 </body>
 </html>
+
