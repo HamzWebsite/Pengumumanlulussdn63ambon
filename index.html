@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pengumuman Kelulusan SDN 63 Ambon</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #2c3e50;
+    }
+
+    h2 {
+      font-size: 20px;
+      color: #34495e;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 16px;
+      color: #7f8c8d;
+      margin-bottom: 30px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #27ae60;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #219150;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 16px;
+      display: none;
+    }
+
+    .success {
+      background-color: #eafaf1;
+      color: #2ecc71;
+    }
+
+    .error {
+      background-color: #fdecea;
+      color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Pengumuman Kelulusan</h1>
+    <h2>SD Negeri 63 Ambon</h2>
+    <h3>Tahun Pelajaran 2024/2025</h3>
+
+    <input type="text" id="nisnInput" placeholder="Masukkan NISN Anda">
+    <button onclick="cekKelulusan()">Cek Kelulusan</button>
+
+    <div id="resultBox" class="result"></div>
+  </div>
+
+  <script>
+    const dataKelulusan = {
+      "3122027631": ["AFIKA LEONI", "Lulus"],
+      "3138057164": ["ALGANTARA RISHAL MAKEAN", "Lulus"],
+      "3136538465": ["ALVIN DION", "Lulus"],
+      "0141971979": ["ANGEL GENOVEVA", "Lulus"],
+      "3132075676": ["ANISYA QUR", "Lulus"],
+      "3124249739": ["AURA SUCI MUJAIN", "Lulus"],
+      "3122083748": ["AZMIL ABDILLA", "Lulus"],
+      "3133635139": ["CHELSEA AULIA RIDWAN", "Lulus"],
+      "3132752495": ["ENSYE TUANAYA", "Lulus"],
+      "3135899569": ["FADLAN ZAKARIA", "Lulus"],
+      "3132702039": ["FAJRIN", "Lulus"],
+      "3132094741": ["IBNU ARBHY ZUBAYR SABBAN", "Lulus"],
+      "3132389717": ["KAISYA ZAHIRAH RUDIN", "Lulus"],
+      "3138624731": ["KARLA YASMINE", "Lulus"],
+      "3139205391": ["KHALIFAH KHAIRUNISYA BIN UMAR", "Lulus"]
+    };
+
+    function cekKelulusan() {
+      const nisn = document.getElementById("nisnInput").value.trim();
+      const resultBox = document.getElementById("resultBox");
+
+      if (dataKelulusan[nisn]) {
+        const [nama, status] = dataKelulusan[nisn];
+        resultBox.innerHTML = `<strong>Nama:</strong> ${nama}<br><strong>Status:</strong> ${status}`;
+        resultBox.className = "result success";
+      } else {
+        resultBox.innerHTML = "NISN tidak ditemukan. Silakan periksa kembali.";
+        resultBox.className = "result error";
+      }
+
+      resultBox.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
