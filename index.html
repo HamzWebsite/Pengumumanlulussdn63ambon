@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Kelulusan SDN 63 Ambon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+
+        .fail {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Pengumuman Kelulusan<br>SD Negeri 63 Ambon<br>Tahun Pelajaran 2024/2025</h2>
+        <input type="text" id="nisn" placeholder="Masukkan NISN Anda" />
+        <button onclick="checkGraduation()">Lihat Hasil</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        const students = {
+            "3122027631": ["AFIKA LEONI", "Lulus"],
+            "3138057164": ["ALGANTARA RISHAL MAKEAN", "Lulus"],
+            "3136538465": ["ALVIN DION", "Lulus"],
+            "0141971979": ["ANGEL GENOVEVA", "Lulus"],
+            "3132075676": ["ANISYA QUR", "Lulus"],
+            "3124249739": ["AURA SUCI MUJAIN", "Lulus"],
+            "3122083748": ["AZMIL ABDILLA", "Lulus"],
+            "3133635139": ["CHELSEA AULIA RIDWAN", "Lulus"],
+            "3132752495": ["ENSYE TUANAYA", "Lulus"],
+            "3135899569": ["FADLAN ZAKARIA", "Lulus"],
+            "3132702039": ["FAJRIN", "Lulus"],
+            "3132094741": ["IBNU ARBHY ZUBAYR SABBAN", "Lulus"],
+            "3132389717": ["KAISYA ZAHIRAH RUDIN", "Lulus"],
+            "3138624731": ["KARLA YASMINE", "Lulus"],
+            "3139205391": ["KHALIFAH KHAIRUNISYA BIN UMAR", "Lulus"],
+            "3131149539": ["KHINARA KHAIRANI ASARA SABBAN", "Lulus"],
+            "3137363930": ["LOVENIA SUMIATI AZZAHRA", "Lulus"],
+            "3129689589": ["MUHAMMAD ADLAN", "Lulus"],
+            "3136849979": ["MOHAMAD PATTY SARKILAN", "Lulus"],
+            "3132618816": ["MUHAMMAD RAFLY WAILISSA", "Lulus"],
+            "3127987794": ["NURRIZKA MARWAH RAMADHANI PANEHORU", "Lulus"],
+            "0123903732": ["RACHEL RAPAEL PUTRA", "Lulus"],
+            "3134832675": ["RAHMAT", "Lulus"],
+            "3131960993": ["RAMZI RAHIM", "Lulus"],
+            "3016333735": ["RADITYA TRIMURTI", "Lulus"],
+            "3127542003": ["RASYA AULIA ODE", "Lulus"],
+            "3123634505": ["REIHAN LA MANI", "Lulus"],
+            "3135642159": ["RESKI SAPUTRA", "Lulus"],
+            "3136144782": ["RIZKY WALLA", "Lulus"],
+            "3124783762": ["SALSYA NABILA RUSTAM", "Lulus"],
+            "3123126811": ["SANDY", "Lulus"],
+            "3135355703": ["SATRIA PAMUNGKAS", "Lulus"],
+            "0124117212": ["SYARIFUDIN PELUPESSY", "Lulus"],
+            "3138104086": ["SYEH ABDUL GAWI ATTAMIMI", "Lulus"],
+            "0133540525": ["VARIS ABDUL RAZAK TUANAYA", "Lulus"]
+        };
+
+        function checkGraduation() {
+            const nisn = document.getElementById("nisn").value.trim();
+            const resultDiv = document.getElementById("result");
+
+            if (students[nisn]) {
+                const [name, status] = students[nisn];
+                resultDiv.innerHTML = `<p>Nama: <strong>${name}</strong></p><p class="success">Keterangan: ${status}</p>`;
+            } else {
+                resultDiv.innerHTML = `<p class="fail">NISN tidak ditemukan. Periksa kembali dan coba lagi.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
